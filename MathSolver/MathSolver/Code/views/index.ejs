@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title><%= title %></title>
+    	<link rel='stylesheet' href='/stylesheet/bootstrap.css' />
+<script>
+function check1000()
+{
+	document.getElementById('h').value=1000;
+	document.getElementById('myform1').action="/randomcalls";
+	document.getElementById('myform1').submit();
+}
+
+function check5000()
+{
+	document.getElementById('h').value=5000;
+	document.getElementById('myform1').action="/randomcalls";
+	document.getElementById('myform1').submit();
+}
+
+function check100()
+{
+	for (i = 0; i < 100; ++i) 
+	{
+		document.getElementById('h').value=1000;
+		document.getElementById('myform1').action="/random100users";
+		document.getElementById('myform1').submit();
+	}
+}
+
+</script>
+   	</head>
+	<body>	
+		
+		<header>
+	    		<h1>Math Solver</h1>
+		</header>
+		<div class="inputArea">
+	    	<br>
+			<form class="formInput" action="/allPrime" method="post">   
+	        	<span>     	
+	        		<label>Enter the Number to find Prime Numbers: </label>
+	           		<input type="text" name="inputNumberAll" id="inputNumber1" value="<%= userInputAll %>">
+	           	</span>
+	           	<input type="submit" class="button allPrimeNumber" value="Find" >
+	        </form>
+	        <br>
+	        <form class="formInput" action="/isPrime" method="post" id="myform1">   
+	        	<span>     	
+	        		<label>Check whether the Number is Prime: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+	           		<input type="text" name="inputNumberIs" id="inputNumber2" value="<%= userInputIs %>">
+	           	</span>
+	           	<input type="submit" class="button allPrimeNumber" value="Check" >
+	           	<br>
+			    <h3><%= result %></h3>
+	           	<br><br><br>
+	           	<h2>Random Mathsolver calls</h2>
+	           	<input type="hidden" id="h" value="" name="h">
+	           	<button type="button" class="btn btn-primary" type="submit" onclick="check1000()">1000 Calls</button><button type="button" class="btn btn-primary" type="submit" onclick="check5000()">5000 Calls</button><button type="button" class="btn btn-primary" type="submit" onclick="check100()">100 Concurrent users with 1000 calls each</button>
+	           	
+	        </form>		
+		</div>
+	    <aside>
+			
+		</aside>
+	</body>		
+</html>

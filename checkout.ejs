@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Amazon Payment Page</title>
+<link rel="stylesheet" type="text/css" href="/stylesheet/bootstrap.min.css">
+<script>
+function signou()
+{
+	document.getElementById('myform12').action="/signout";
+	document.getElementById('myform12').submit();
+}
+function validate()
+{
+	if(document.getElementById('inputnumber3').value=="" || document.getElementById('inputEmail3').value=="" || document.getElementById('inputPassword3').value=="" )
+	{
+		alert('Field cannot be left blank !');
+    	return false;
+	}
+	if(isNaN(document.getElementById('inputnumber3').value))
+	{
+		alert('Please input a valid credit card number');
+    	return false;
+	}
+	if(document.getElementById('inputnumber3').value.length != 16)
+	{
+		alert('Credit card number should be 16 digits');
+    	return false;
+	}
+}
+</script>
+</head>
+<body>
+<h1>Payment Gateway</h1>
+
+<form class="form-horizontal" role="form" action="/last" method="post" onsubmit="return validate()">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="Enter Name">
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="inputnumber3" class="col-sm-2 control-label">Card No</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputnumber3" placeholder="Enter 16 Digit Card No">
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">CVV No</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Enter CVV">
+    </div>
+  </div>
+  <H3> Amount to be Paid = <%=sum%> </H3>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Pay Now</button>
+    </div>
+  </div>
+</form>
+<pre>
+<form id="myform12" name="myform12" action="/signout" method="post">
+                                       Click here to log out: <button type="button" class="btn btn-primary" type="submit" onclick="signou()">Sign Out</button>
+</form>
+</body>
+</html>

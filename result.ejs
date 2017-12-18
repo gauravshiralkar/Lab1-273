@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Amazon Product Catalog</title>
+<link rel="stylesheet" type="text/css" href="/stylesheet/bootstrap.min.css"/>
+<script>
+function subvalidate()
+{
+	document.getElementById('myform12').action="/signout";
+	document.getElementById('myform12').submit();
+}
+
+function val(val1,val2,val3,val4,val5,val6)
+{
+       document.getElementById('c1').value = val1;
+       document.getElementById('c2').value = val2;
+       document.getElementById('c3').value = val3;
+       document.getElementById('c4').value = val4;
+       document.getElementById('c5').value = val5;
+       document.getElementById('c6').value = val6;
+}
+
+</script>
+
+</head>
+<body>
+<pre>
+
+<h2> Welcome <%=name%> . . .</h2>  Last Login: <%=llogin%>
+
+<h3> Product Catalog 1 : Electronics </h3>
+<form action="/updatecart" method="post" id="myform" name="myform">
+<table border="5" class="table" id="myTable">
+<tr class="warning" bgcolor="aqua">
+     <th> Name </th>
+     <th> Description </th>
+     <th> Price </th>
+     <th> Available </th>
+     <th> Quantity </th>
+     <th> </th>
+<tr>
+
+<tr border="none" class="success">
+      <input type="hidden" value="" id="c1" name="c1">
+      <input type="hidden" value="" id="c2" name="c2"> 
+      <input type="hidden" value="" id="c3" name="c3"> 
+      <input type="hidden" value="" id="c4" name="c4"> 
+<tr>
+
+<tr>
+     <td> Dell 10R </td>
+     <td> Dell Laptop - 2.2 GHz Core 2 Duo, 2GB RAM </td>
+     <td> 550 </td>
+     <td> <%=posts[0].pavl%> </td>
+     <td> <input id="t1" type="text" style="width:40px" name="op1" value="1"> </td>
+     <td> <input name="add" value="Add to Cart" type="submit" onclick="val('Dell 10R','Dell Laptop - 2.2 GHz Core 2 Duo 2GB RAM',550,document.getElementById('t1').value)"> </td>
+<tr>
+
+<tr>
+     <td> Dell 11R </td>
+     <td> Dell Laptop - 1 GHz Quad Core, 4GB RAM </td>
+     <td> 700 </td>
+     <td> <%=posts[1].pavl%> </td>
+     <td> <input id="t2" type="text" style="width:40px" name="op1" value="1"> </td>
+     <td> <input name="add" value="Add to Cart" type="submit" onclick="val('Dell 11R','Dell Laptop - 1 GHz Quad Core 4GB RAM',700,document.getElementById('t2').value)"> </td>
+<tr>
+
+<tr>
+     <td> Dell 15R </td>
+     <td> Dell Laptop - 1 GHz i7, 6GB RAM </td>
+     <td> 650 </td>
+     <td> <%=posts[2].pavl%> </td>
+     <td> <input id="t3" type="text" style="width:40px" name="op1" value="1"> </td>
+     <td> <input name="add" value="Add to Cart" type="submit" onclick="val('Dell 15R','Dell Laptop - 1 GHz i7 6GB RAM',650,document.getElementById('t3').value)"> </td>
+<tr>
+
+</table>
+<h3> Product Catalog 2 : Furniture </h3>
+<table border="5" class="table" id="myTable">
+<tr bgcolor="aqua">
+     <th> Name </th>
+     <th> Description </th>
+     <th> Price </th>
+     <th> Available </th>
+     <th> Quantity </th>
+     <th> </th>
+<tr>
+
+<tr>
+     <td> Heritage </td>
+     <td> Sofa Leather with Polyster</td>
+     <td> 550 </td>
+     <td> <%=posts[3].pavl%> </td>
+     <td> <input id="t4" type="text" style="width:40px" name="op1" value="1"> </td>
+     <td> <input name="add" value="Add to Cart" type="submit" onclick="val('Heritage','Sofa Leather with Polyster',2050,document.getElementById('t4').value)"> </td>
+<tr>
+
+<tr>
+     <td> Clayton </td>
+     <td> Living Room Lighting LED </td>
+     <td> 700 </td>
+     <td> <%=posts[4].pavl%> </td>
+     <td> <input id="t5" type="text" style="width:40px" name="op1" value="1"> </td>
+     <td> <input name="add" value="Add to Cart" type="submit" onclick="val('Clayton','Living Room Lighting LED',100,document.getElementById('t5').value)"> </td>
+<tr>
+</table>
+</form>
+<form id="myform12" name="myform12" action="/continue" method="post">
+                                       Click here to log out: <button type="button" class="btn btn-primary" type="submit" onclick="subvalidate()">Sign Out</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Upload</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheet/bootstrap.min.css">
+ 
+<script>
+function signou()
+{
+	document.getElementById('myform12').action="/signout";
+	document.getElementById('myform12').submit();
+}
+function val(val1)
+{
+       document.getElementById('c1').value = val1;
+}
+
+
+function subvalidate()
+{
+	document.getElementById('myform').action="/continue";
+	document.getElementById('myform').submit();
+}
+
+function checkout()
+{
+	if (document.getElementById('sum').value==0)
+    {
+     	alert('Oops.. The shopping cart is empty, add some items !');
+     	return false;
+    }
+	document.getElementById('myform1').action="/checkout";
+	document.getElementById('myform1').submit();
+}
+</script>
+ 
+</head>
+<body>
+<pre> 
+<h2> Your Shopping Cart </h2>
+<form action="/deletefromcart" method="post" id="myform" name="myform">   
+<table border="5" class="table">
+   <tr class="active" bgcolor="aqua">
+   		<th> Name </th>
+   		<th> Desc </th>
+   		<th> Price </th>
+   		<th> Qty </th>
+   		<th> Total Price </th>
+   		<th>  </th>
+   </tr>
+   <tr>
+   		<input type="hidden" value="" id="c1" name="c1">
+   </tr>
+<% var sum=0;
+for(var k=0; k<posts.length; k++) {%>
+   <tr>
+   		<td><%= posts[k].pname %></td>
+   		<td><%= posts[k].pdesc %></td>
+   		<td><%= posts[k].pprice %></td>
+   		<td><%= posts[k].pqty %></td>
+   		<td><%= posts[k].tp %></td>
+   		<td><input class="btn btn-primary btn-lg" name="<%= posts[k].pid %>" value="Delete from Cart" type="submit" onclick="val(name)"></td>
+   </tr>
+<% sum=sum+posts[k].tp;} %>
+</table>
+<h3> Total Amount = <%=sum%> </h3>      
+</form>
+<form id="myform" name="myform" action="/continue" method="post">
+<button type="button" class="btn btn-primary" type="submit" onclick="subvalidate()">Continue Shopping</button>
+</form>  
+<form id="myform1" action="/checkout" method="post">
+<input type="hidden" value="<%=sum%>" id="sum" name="sum"><button type="button" class="btn btn-primary" type="submit" onclick="checkout()">CheckOut</button>
+</form>
+</body>
+<form id="myform12" name="myform12" action="/signout" method="post">
+                                       Click here to log out: <button type="button" class="btn btn-primary" type="submit" onclick="signou()">Sign Out</button>
+</form>
+</html>

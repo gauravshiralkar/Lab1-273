@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <title>Upload</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheet/bootstrap.min.css">
+<script>
+
+function subvalidate()
+{
+	document.getElementById('myform11').action="/continue";
+	document.getElementById('myform11').submit();
+}
+
+</script> 
+ 
+ 
+ </head>
+<body> 
+<h2> Congratulations </h2>
+<h4> You have purchased the following products and Product catalog updated ! </h4>
+<form>
+<ul>
+<% for(var i=0; i<posts.length; i++) {%>
+   <li><%= posts[i].pname %> &nbsp: <%= posts[i].pdesc %> &nbsp: <%= posts[i].pqty %></li>
+   <br>
+<% } %>
+</ul>
+<br>
+</form>
+
+<form id="myform11" name="myform11" action="/continue" method="post">
+<button type="button" class="btn btn-primary" type="submit" onclick="subvalidate()">Continue Shopping</button>
+</form>  
+
+</body>
+</html>

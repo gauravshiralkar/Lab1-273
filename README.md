@@ -1,4 +1,2 @@
-Lab1-273
-========
+“Amazon Store” to demonstrate RESTful Services  
 
-Lab1-273
